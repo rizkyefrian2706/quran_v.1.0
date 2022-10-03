@@ -60,8 +60,8 @@ export default function Nomor(props) {
 
   const headerData = () => {
     return (
-      <>
-        <div className='flex flex-wrap justify-between items-center cursor-pointer lg:text-lg md:text-md sm:text-sm'>
+      <div className=''>
+        <div className='flex flex-wrap justify-between items-center cursor-pointer'>
           {props.data.surat_selanjutnya != undefined ? (
             <a onClick={(e) => linkDetail(e, props.data.surat_selanjutnya.nomor)} className=" text-green-400">
               <h1>
@@ -72,7 +72,7 @@ export default function Nomor(props) {
           <h1 className=' text-center lg:ml-10 lg:mr-10 md:ml-10 md:mr-10 sm:ml-3 sm:mr-3'>
             {props.data.nama_latin}<br />
 
-            <div className=' flex flex-wrap justify-center items-center cursor-pointer'>
+            <div className=' flex flex-wrap justify-center items-center cursor-pointer text-xs'>
               <div className='uppercase'>{props.data.tempat_turun}</div>
               <div className=' pl-5 pr-5'>{props.data.arti}</div>
               <div>{props.data.jumlah_ayat} Ayat</div>
@@ -88,7 +88,7 @@ export default function Nomor(props) {
             // </Link>
           ) : ""}
         </div>
-      </>
+      </div>
     )
   }
 
@@ -105,7 +105,7 @@ export default function Nomor(props) {
     <div className=" bg-[url('/bgg.png')] min-h-screen text-white w-full">
       {/* <Navbar></Navbar> */}
 
-      <header className=' bg-green-600 fixed top-0 left-0 w-full h-24 z-20 sm:text-xs'>
+      <header className=' bg-green-600 fixed top-0 left-0 w-full h-20 z-20'>
         <div className="flex flex-wrap items-center justify-between relative lg:ml-10 lg:mr-10 md:ml-5 md:mr-5 sm:ml-2 sm:mr-2">
           <div className=' flex flex-wrap justify-center items-center'>
             <Image src="/quran.png" alt='quran' width="30" height="30" />
@@ -114,11 +114,13 @@ export default function Nomor(props) {
             </Link>
           </div>
           <div>
-            <div className='flex flex-wrap justify-between items-center cursor-pointer'>
-              <div>
+            <div className='flex flex-wrap justify-between items-center cursor-pointer text-xs'>
+              <div className=' flex flex-wrap justify-center items-center'>
+                <p className='mr-1'>Quran</p>
                 <Image src="/quran_.png" alt='quran_' width="20" height="20" className=' object-fill brightness-150' title='Quran' />
               </div>
-              <div onClick={(e) => linkTafsir(e, props.data.nomor)} className=' ml-2 mr-2'>
+              <div onClick={(e) => linkTafsir(e, props.data.nomor)} className=' ml-2 mr-2 flex flex-wrap justify-center items-center'>
+                <p className='mr-1'>Tafsir</p>
                 <Image src="/book.png" alt='tafsir' width="20" height="20" title='Tafsir' />
               </div>
               <div onClick={(e) => play(e, audioPl)} className="mr-5">
@@ -132,20 +134,21 @@ export default function Nomor(props) {
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-center relative lg:ml-10 lg:mr-10 md:ml-5 md:mr-5 sm:ml-2 sm:mr-2 ">
-          <div>
-            {headerData()}
-          </div>
+          {headerData()}
         </div>
       </header>
 
-      <div className='max-h-screen overflow-auto w-full p-20 pt-28 pb-5'>
-        <div className='rounded-2xl '>
-          {props.data.nomor != "1" ? (
-            <div className='rounded-xl p-3 mb-1 bg-green-500 shadow-md shadow-black text-center'>
-              <Image src="/bismillah.png" alt='quran' width="250" height="70" />
-            </div>
-          ) : <></>}
-          {loopData()}
+
+      <div className='max-h-screen overflow-auto flex flex-wrap justify-center items-center'>
+        <div className=' w-5/6 pt-28 pb-5 '>
+          <div className='rounded-2xl '>
+            {props.data.nomor != "1" ? (
+              <div className='rounded-xl p-3 mb-1 bg-green-500 shadow-md shadow-black text-center'>
+                <Image src="/bismillah.png" alt='quran' width="250" height="70" />
+              </div>
+            ) : <></>}
+            {loopData()}
+          </div>
         </div>
         {audioPl == "show" ? (
           <div className=' mb-10'>
