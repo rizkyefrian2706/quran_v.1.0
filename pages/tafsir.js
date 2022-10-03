@@ -97,6 +97,15 @@ export default function Nomor(props) {
     })
   }
 
+  const linkSurat = (e, nomor) => {
+    return router.push({
+      pathname: "/surat",
+      query: {
+        ke: nomor,
+      },
+    })
+  }
+
   return (
     <div className=" bg-[url('/bgg.png')] min-h-screen text-white w-full">
       {/* <Navbar></Navbar> */}
@@ -111,7 +120,7 @@ export default function Nomor(props) {
           </div>
           <div>
             <div className='flex flex-wrap justify-between items-center cursor-pointer text-xs'>
-              <div className=' flex flex-wrap justify-center items-center'>
+              <div onClick={(e) => linkSurat(e, props.data.nomor)} className=' flex flex-wrap justify-center items-center'>
                 <p className='mr-1'>Quran</p>
                 <Image src="/quran_.png" alt='quran_' width="20" height="20" className=' object-fill brightness-150' title='Quran' />
               </div>
