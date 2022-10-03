@@ -102,16 +102,16 @@ export default function Nomor(props) {
   }
 
   return (
-    <div className=" bg-[url('/bgg.png')] min-h-screen text-white ">
+    <div className=" bg-[url('/bgg.png')] min-h-screen text-white w-full">
       {/* <Navbar></Navbar> */}
 
       <header className=' bg-green-600 fixed top-0 left-0 w-full h-24 z-20 sm:text-xs'>
         <div className="flex flex-wrap items-center justify-between relative lg:ml-10 lg:mr-10 md:ml-5 md:mr-5 sm:ml-2 sm:mr-2">
           <div className=' flex flex-wrap justify-center items-center'>
-          <Image src="/quran.png" alt='quran' width="30" height="30" />
-          <Link href="/">
-            List Quran
-          </Link>
+            <Image src="/quran.png" alt='quran' width="30" height="30" />
+            <Link href="/">
+              List Quran
+            </Link>
           </div>
           <div>
             <div className='flex flex-wrap justify-between items-center cursor-pointer'>
@@ -138,16 +138,14 @@ export default function Nomor(props) {
         </div>
       </header>
 
-      <div className='max-h-screen overflow-auto '>
-        <div className=' p-20 pt-28 pb-5'>
-          <div className='rounded-2xl '>
-            {props.data.nomor != "1" ? (
-              <div className='rounded-xl p-3 mb-1 bg-green-500 shadow-md shadow-black text-center'>
-                <Image src="/bismillah.png" alt='quran' width="250" height="70" />
-              </div>
-            ) : <></>}
-            {loopData()}
-          </div>
+      <div className='max-h-screen overflow-auto w-full p-20 pt-28 pb-5'>
+        <div className='rounded-2xl '>
+          {props.data.nomor != "1" ? (
+            <div className='rounded-xl p-3 mb-1 bg-green-500 shadow-md shadow-black text-center'>
+              <Image src="/bismillah.png" alt='quran' width="250" height="70" />
+            </div>
+          ) : <></>}
+          {loopData()}
         </div>
         {audioPl == "show" ? (
           <div className=' mb-10'>
@@ -158,6 +156,7 @@ export default function Nomor(props) {
           </footer>
         </>)}
       </div>
+
       <div className={audioPl} onClick={(e) => play(e, audioPl)}>
         <footer className=' bg-green-600 fixed bottom-0 left-0 w-full h-12 z-20'>
           <div className="flex flex-wrap items-center justify-center relative ml-10 mr-10">
@@ -165,12 +164,11 @@ export default function Nomor(props) {
               src={props.data.audio}
               autoPlay={false}
               controls
-              className=' w-3/5'
+              className=' sm:w-full lg:w-2/4 md:w-2/4'
             />
           </div>
         </footer>
       </div>
-
     </div>
   )
 }
